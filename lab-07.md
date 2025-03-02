@@ -125,11 +125,49 @@ a lot higher than the no-mask counties.
 ### Exercise 4
 
 The information that the graph tells us is surprising. We would think
-that mask can protect us from covid, but the graph shows that cases of
-Covid is much fewer in no-mask counties. Maybe wearing mask or not
-doesn’t matter. But looking more closely, this graph tells us that if
-you are living in a place where many people are affected by Covid,
-wearing a mask will significantly lower your chance of getting Covid.
-However, for a place where Covid is not prevalent, it’s doesn’t matter
-as much whether you wear a mask or not. Maybe mask-mandatory counties
-ask people to wear mask because they have higher rate of Covid.
+that wearing masks would have a lower rate of having Covid, but the
+graph shows that cases of Covid is much fewer in no-mask counties. This
+graph tells us that if you are living in a place where many people are
+affected by Covid, wearing a mask will significantly lower your chance
+of getting Covid. Wearing mask has a protective effect. However, for a
+place where Covid is not prevalent, it doesn’t matter as much whether
+you wear a mask or not. Maybe mask-mandatory counties ask people to wear
+mask because they have higher rate of Covid.
+
+### Exercise 5
+
+Key factors that contribute to my graph’s message. The type of
+visualization is line, which captures the trend of the cases. This is
+why we are able to conclude that wearing a mask can have a protective
+effect. Two types of counties (mask\|no mask) are represented by
+different lines, and the scales for the two types of counties are the
+same. So, we are able to draw accurate comparisons between the two.
+
+### Exercise 6
+
+We could easily use the original data to tell a different story which
+only captures part of the truth. I am thinking about creating a graph
+that represents the mean number of 7-day rolling average of daily cases
+for two types of counties. This will tell the opposite story that
+wearing mask has no use at all, or is even harmful: the mask-mandatory
+county group has a much higher cases of Covid than no-mask county group.
+
+### Exercise 7
+
+``` r
+df %>% 
+  group_by(County) %>% 
+  summarise(mean_cases = mean(cases)) %>% 
+  ggplot(aes(x = County, y = mean_cases, fill = County)) +
+  geom_col() +
+  labs(title = "Kansas COVID-19: Average 7-Day Rolling Average of Daily Cases/Per 100K Population from July 12 to Aug 3rd, 2020",
+       subtitle = "Mask Counties Vs. No-Mask Mandate Counties",
+       caption = "Source: Kansas Department of Health and Environment",
+       x = NULL, 
+       y = "Mean Number of Cases",
+       color = "County") 
+```
+
+![](lab-07_files/figure-gfm/opposite-1.png)<!-- -->
+
+Opposite message: Wearing mask is bad.
