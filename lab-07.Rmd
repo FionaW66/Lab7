@@ -11,12 +11,63 @@ output: github_document
 library(tidyverse) 
 ```
 
-### Exercise 1
+What is wrong with this graph:       
+The scales on the two axes are different. On the left for "mask mandatory", the axis ranges from 15 to 25. On the right for "no mask", the axis ranges from 4 to 14. One the graph, it seems like there are a period of overlap between the two lines. It gives the idea that there are a equal number of daily cases in no mask and mask mandatory counties. However, that's far from the truth. If you were to unify the range, then the blue line (no mask) should be way lower than the orange line (mask mandatory). In other words, daily cases in no-mask mandatory counties have fewer 7-day rolling average of daily cases than mask mandatory counties. That's how this graph is misleading. The way I will fix this is to make the two axes have the same range. 
 
-Remove this text, and add your answer for Exercise 1 here.
-Add code chunks as needed.
-Don't forget to label your code chunk.
-Do not use spaces in code chunk labels.
+### Exercise 1
+Create a data frame that can be used to reconstruct the graph.
+```{r}
+df <- tribble(
+  ~date, ~count, ~policy,
+  "07/12/2020", 28, "Mask",
+  "07/12/2020", 9.8, "No Mask",
+  "07/13/2020", 19.6, "Mask",
+  "07/13/2020", 9.2, "No Mask",
+  "07/14/2020", 19.5, "Mask",
+  "07/14/2020", 9.4, "No Mask",
+  "07/15/2020", 20.3, "Mask",
+  "07/15/2020", 9.9, "No Mask",
+  "07/16/2020", 19.6, "Mask",
+  "07/16/2020", 10, "No Mask",
+  "07/17/2020", 19.6, "Mask",
+  "07/17/2020", 9.4, "No Mask",
+  "07/18/2020", 20.3, "Mask",
+  "07/18/2020", 9.3, "No Mask",
+  "07/19/2020", 20, "Mask",
+  "07/19/2020", 9, "No Mask",
+  "07/20/2020", 20.5, "Mask",
+  "07/20/2020", 8.6, "No Mask",
+  "07/21/2020", 21.3, "Mask",
+  "07/21/2020", 8.6, "No Mask",
+  "07/22/2020", 20, "Mask",
+  "07/22/2020", 8.8, "No Mask",
+  "07/23/2020", 20, "Mask",
+  "07/23/2020", 8.6, "No Mask",
+  "07/24/2020", 20.3, "Mask",
+  "07/24/2020", 9.8, "No Mask",
+  "07/25/2020", 19, "Mask",
+  "07/25/2020", 9.9, "No Mask",
+  "07/26/2020", 19.6, "Mask",
+  "07/26/2020", 10.1, "No Mask",
+  "07/27/2020", 17, "Mask",
+  "07/27/2020", 9.5, "No Mask",
+  "07/28/2020", 16.3, "Mask",
+  "07/28/2020", 9.5, "No Mask",
+  "07/29/2020", 16.5, "Mask",
+  "07/29/2020", 9.6, "No Mask",
+  "07/30/2020", 16.6, "Mask",
+  "07/30/2020", 10, "No Mask",
+  "07/31/2020", 16, "Mask",
+  "07/31/2020", 9, "No Mask",
+  "08/01/2020", 16.3, "Mask",
+  "08/01/2020", 9.2, "No Mask",
+  "08/02/2020", 15.9, "Mask",
+  "08/02/2020", 8.9, "No Mask",
+  "08/03/2020", 16, "Mask",
+  "08/03/2020", 9.4, "No Mask"
+)
+df
+```
 
 ### Exercise 2
 
