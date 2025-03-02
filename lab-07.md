@@ -113,3 +113,23 @@ df %>%
 ```
 
 ![](lab-07_files/figure-gfm/mygraph-1.png)<!-- -->
+
+### Exercise 3
+
+In my visualization, the comparison between the counties are more clear.
+My graph is not misleading like the original one. They are on the same
+scales now. We can see a clear decrease in the number of 7-day rolling
+average of daily cases in mask-mandatory counties; however, it is still
+a lot higher than the no-mask counties.
+
+### Exercise 4
+
+The information that the graph tells us is surprising. We would think
+that mask can protect us from covid, but the graph shows that cases of
+Covid is much fewer in no-mask counties. Maybe wearing mask or not
+doesn’t matter. But looking more closely, this graph tells us that if
+you are living in a place where many people are affected by Covid,
+wearing a mask will significantly lower your chance of getting Covid.
+However, for a place where Covid is not prevalent, it’s doesn’t matter
+as much whether you wear a mask or not. Maybe mask-mandatory counties
+ask people to wear mask because they have higher rate of Covid.
