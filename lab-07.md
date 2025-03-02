@@ -1,7 +1,7 @@
 Lab 07 - Conveying the right message through visualisation
 ================
-Insert your name here
-Insert date here
+Fiona Wang
+03-02-2025
 
 ### Load packages and data
 
