@@ -28,7 +28,7 @@ Create a data frame that can be used to reconstruct the graph.
 
 ``` r
 df <- tribble(
-  ~date, ~count, ~policy,
+  ~date, ~cases, ~County,
   "07/12/2020", 28, "Mask",
   "07/12/2020", 9.8, "No Mask",
   "07/13/2020", 19.6, "Mask",
@@ -80,7 +80,7 @@ df
 ```
 
     ## # A tibble: 46 × 3
-    ##    date       count policy 
+    ##    date       cases County 
     ##    <chr>      <dbl> <chr>  
     ##  1 07/12/2020  28   Mask   
     ##  2 07/12/2020   9.8 No Mask
@@ -96,6 +96,20 @@ df
 
 ### Exercise 2
 
-…
+``` r
+df<- df %>% 
+  mutate(date = as.Date(date, format = "%m/%d/%Y"))
+df %>% 
+  group_by(date) %>% 
+  ggplot(aes(x = date, y = cases, color = County)) +
+  geom_line() +
+  labs(title = "Kansas COVID-19 7-Day Rolling Average of Daily Cases/Per 100K Population",
+       subtitle = "Mask Counties Vs. No-Mask Mandate Counties",
+       caption = "Source: Kansas Department of Health and Environment",
+       x = "Date", 
+       y = "Cases",
+       color = "County") +
+  scale_x_date(date_labels = "%m/%d", date_breaks = "1 day")
+```
 
-Add exercise headings as needed.
+![](lab-07_files/figure-gfm/mygraph-1.png)<!-- -->
